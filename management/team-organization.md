@@ -1,6 +1,6 @@
 # Team Organization
 
-Project carried out as a pair at 42: **slidriss** and **bgranier** — the
+Project carried out as a pair at 42: **slidriss** and **thmaille** — the
 same pair that delivered the `A-Maze-ing` project, which made the maze
 integration easier to reason about since both of us already knew the
 wall-bitmask format.
