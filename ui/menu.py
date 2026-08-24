@@ -57,6 +57,11 @@ def _gameplay_lines(config: GameConfig) -> List[str]:
     # hard-coded, so the screen always describes the game actually being
     # played, even with the config handed over at defense time (V.3).
     return [
+        "History of the game:",
+        "  A full recreation of the classic 1980 Pac-Man",
+        "  arcade game in Python, built with an object-oriented,",
+        "  modular architecture.",
+        "",
         "Goal:",
         "  Eat every pacgum of each level without",
         "  getting caught by the ghosts.",
@@ -70,10 +75,10 @@ def _gameplay_lines(config: GameConfig) -> List[str]:
         "  Backspace           erase a letter of your name",
         "",
         "The 4 ghosts:",
-        "  Blinky  charges straight at you (fastest)",
-        "  Pinky   aims ahead of you to cut you off",
-        "  Inky    alternates chasing and wandering",
-        "  Clyde   follows from afar, flees up close",
+        "  Blinky     charges straight at you (fastest)",
+        "  Pinky      aims ahead of you to cut you off",
+        "  Inky       alternates chasing and wandering",
+        "  Clyde      follows from afar, flees up close",
         "",
         "Rules:",
         f"  Pacgum              +{config.points_per_pacgum} points",
