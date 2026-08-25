@@ -1,5 +1,5 @@
 # Risk Analysis
-
+ 
 | Risk | Likelihood | Impact | Mitigation in place |
 |---|---|---|---|
 | The assigned A-Maze-ing package has a different module, class or constructor signature | **Realised** — `mazegenerator` 2.1.0 takes `size=(w, h)` as a tuple | Maze generation fails, the game is unplayable at review | All integration isolated in `maze/adapter.py`; several import paths and class names tried in priority order; constructor called through `inspect.signature` so only declared parameters are passed; `PACMAN_AMAZING_MODULE` env var forces a specific module without editing code |
@@ -9,7 +9,7 @@
 | "The game configuration will be updated during the defense" (V.3) with missing or absurd values | High — explicitly announced by the subject | Game refuses to start | Every key is optional and individually clamped to a documented default with a logged warning; unknown keys ignored; levels auto-padded to the 10 required by VI.7; only a genuinely unreadable/unparsable file raises, and it is reported as a clean message |
 | Corrupted or missing highscore file | Medium | Highscore feature breaks | The board falls back to an empty list and logs a warning; each entry is re-sanitized on load, so a hand-edited file cannot inject bad names or negative scores |
 | Packaged build cannot write its highscore file (read-only install folder) | Medium | Scores silently lost | In a frozen build the file is redirected to `~/.pacman42/`; write failures are caught and logged, never fatal |
-| Ghost pathfinding cost on large mazes (33x33 at level 10) | Low | Frame drops | BFS is recomputed only when a ghost is exactly cell-aligned, not every frame |
+| Ghost pathfinding cost on large mazes (the 20x20 levels, and up to 99x99 under the extreme-size clamps) | Low | Frame drops | BFS is recomputed only when a ghost is exactly cell-aligned, not every frame |
 | Player trapped by all four ghosts with no escape | Was **realised** during development | Game unwinnable regardless of skill | Alternating scatter/chase phases and a "PRET !" freeze on every level start and respawn (see `blocking-points.md`) |
 | Two conflicting pygame distributions installed | Was **realised** during development | Hard segfault on macOS | `make install` uninstalls both `pygame` and `pygame-ce` before reinstalling exactly one |
 | Third-party `amazing/` code failing our own lint | Was **realised** | `make lint` fails on code we are not allowed to modify | `amazing/` excluded from flake8 and mypy in `setup.cfg`, while our own code stays fully checked (including `mypy --strict`) |

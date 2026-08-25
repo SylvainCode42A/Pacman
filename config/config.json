@@ -3,24 +3,22 @@
   # Lines starting with '#' or '//' are ignored, as are /* ... */ blocks.
   # Every key is optional: a missing or invalid value falls back to a safe
   # default with a logged warning, and unknown keys are ignored (V.3).
-
   "highscore_filename": "highscores.json",
 
   # Fixed seed for level 1 (VI.1). Later levels are randomly generated.
   "seed": 42,
 
   # Seconds allowed per level, the same for every level.
-  "level_max_time": 90,
-
+  "level_max_time": 130,
   "lives": 3,
 
-  # Pacgums placed per level. A 13x13 maze offers 164 usable corridors,
-  # so 84 covers a bit over half of them, which is what "in most
-  # corridors" means (VI.1 / VI.4). It is the floor: below 83 the maze
-  # would hold pacgums in fewer than half of its corridors. They are
-  # spread evenly across the maze rather than packed around the start
-  # (see game/level.py).
-  "pacgum": 84,
+  # Pacgums placed per level. A 20x20 maze offers 388 usable corridors,
+  # so 200 covers a bit over half of them (51.5%), which is what "in
+  # most corridors" means (VI.1 / VI.4). It is the floor: below 194 the
+  # maze would hold pacgums in fewer than half of its corridors. They
+  # are spread evenly across the maze rather than packed around the
+  # start (see game/level.py).
+  "pacgum": 200,
 
   # Scoring (VI.6).
   "points_per_pacgum": 10,
@@ -33,12 +31,13 @@
   "cell_size": 24,
   "fullscreen": true,
 
-  # Speeds tied to level_max_time: clearing the 84 spread pacgums of a
-  # 13x13 maze takes about 190 moves, so 5 cells per second stays well
-  # inside the 90 s limit, detours and dodging included. The player is
-  # also deliberately faster than every ghost, so escaping is always
-  # possible. Ghosts then differ by personality (see entities/ghost.py):
-  # Blinky x1.10, Pinky x1.00, Inky x0.95, Clyde x0.85.
+  # Speeds tied to level_max_time: clearing the 200 spread pacgums of a
+  # 20x20 maze takes 290 to 340 moves depending on the level, so 5 cells
+  # per second stays inside the 130 s limit with 28 to 42 s of margin,
+  # detours and dodging included. The player is also deliberately faster
+  # than every ghost, so escaping is always possible. Ghosts then differ
+  # by personality (see entities/ghost.py): Blinky x1.10, Pinky x1.00,
+  # Inky x0.95, Clyde x0.85.
   "player_speed": 5,
   "ghost_speed": 2,
 
@@ -47,18 +46,18 @@
   "frightened_duration": 8,
   "ghost_respawn_delay": 7,
 
-  # 10 levels (the minimum required by VI.7), all 13x13: what changes
+  # 10 levels (the minimum required by VI.7), all 20x20: what changes
   # from one level to the next is the maze itself, not its size.
   "levels": [
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 },
-    { "width": 13, "height": 13 }
-  ]
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 },
+      { "width": 20, "height": 20 }
+    ]
 }
